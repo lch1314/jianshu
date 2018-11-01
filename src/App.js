@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Globalstyle } from './style'
+import { IconGlobalstyle } from './statics/iconfont/iconfont'
+import Header from './common/header/index'
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <Fragment>
         <Globalstyle/>
-        hello
-      </div>
+        <IconGlobalstyle />
+        <Header />
+      </Fragment>
     );
   }
 }
