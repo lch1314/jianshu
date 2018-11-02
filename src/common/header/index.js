@@ -55,8 +55,9 @@ const Header = (props) => {
 
 // 这个方法的意思是:这个组件和store做连接的时候，store里面的数据如何映射到props上面，它会接受state参数,这个state指的就是store里面的数据,即reducer.js中返回的state数据
 const mapStateToProps = (state) => {
+    // 现在state返回的header对象其实是一个immutable对象了
     return {
-        focused: state.header.focused
+        focused: state.header.get('focused')
     }
 }
 
