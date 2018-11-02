@@ -8,3 +8,12 @@ yarn add styled-components
 
 ####下载动画库： 
 npm install react-transition-group --save  或   yarn add react-transition-group
+
+####安装redux:(用于存储数据)
+npm install --save redux  或 yarn add redux
+
+####安装react-redux:(可以方便我们在react中使用redux)
+npm install --save react-redux  或 yarn add react-redux
+
+####安装immutable:
+npm install immutable  或 yarn add immutable
