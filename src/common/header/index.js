@@ -25,8 +25,14 @@ class Header extends Component {
             <HeaderWrapper>
                 <Logo />
                 <Nav>
-                    <NavItem className="left active">首页</NavItem>
-                    <NavItem className="left">下载App</NavItem>
+                    <NavItem className="left active">
+                        <i className="iconfont menu-icon">&#xe600;</i>
+                        <span className="menu-text">首页</span>
+                    </NavItem>
+                    <NavItem className="left">
+                        <i className="iconfont menu-icon">&#xe663;</i>
+                        <span className="menu-text">下载App</span>
+                    </NavItem>
                     <NavItem className="right">登陆</NavItem>
                     <NavItem className="right">
                         <i className="iconfont">&#xe636;</i>

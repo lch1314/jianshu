@@ -21,8 +21,11 @@ export const Logo = styled.a.attrs({
 export const Nav = styled.div`
     width:960px;
     height:100%;
+    min-width: 768px;
+    max-width: 1440px;
     margin: 0 auto;
     padding-right: 70px;
+    padding-left: 100px;
     box-sizing: border-box;
 `
 
@@ -33,18 +36,32 @@ export const NavItem = styled.div`
     color: #333;
     &.left {
         float: left;
+        i {
+            font-size: 20px;
+            margin-right: 5px;
+        }
     }
     &.right {
         float: right;
         color: #969696;
+        i {
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+        }
     }
     &.active {
         color: #ea6f5a;
     }
-    i {
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 400;
+    @media (max-width: 1439px) and (min-width: 1081px) {
+        i.menu-icon {
+            display:none;
+        }
+    }
+    @media (max-width: 1080px) and (min-width: 768px) {
+       span.menu-text {
+           display: none;
+       }
     }
 `
 

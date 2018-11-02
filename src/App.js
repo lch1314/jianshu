@@ -7,8 +7,11 @@ class App extends Component {
   render() {
     return (
       <Fragment>
+        {/* 全局样式 */}
         <Globalstyle/>
+        {/* 字体图标样式 */}
         <IconGlobalstyle />
+        {/* 头部区域 */}
         <Header />
       </Fragment>
     );
