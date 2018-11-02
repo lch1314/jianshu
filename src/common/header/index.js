@@ -6,8 +6,6 @@ import {
     Nav,
     NavItem,
     NavSearch,
-    Addition,
-    Button,
     SearchWrapper
 } from './style'
 
@@ -33,7 +31,11 @@ class Header extends Component {
                         <i className="iconfont menu-icon">&#xe663;</i>
                         <span className="menu-text">下载App</span>
                     </NavItem>
-                    <NavItem className="right">登陆</NavItem>
+                    <NavItem className="right writting">
+                        <i className="iconfont">&#xe60b;</i>写文章
+                    </NavItem>
+                    <NavItem className="right reg">注册</NavItem>
+                    <NavItem className="right">登录</NavItem>
                     <NavItem className="right">
                         <i className="iconfont">&#xe636;</i>
                     </NavItem>
@@ -51,12 +53,6 @@ class Header extends Component {
                         </CSSTransition>
                         <i className={this.state.focused ? 'focused iconfont' : 'iconfont'}>&#xe614;</i>
                     </SearchWrapper>
-                    <Addition>
-                        <Button as="a" href="/" className="reg">注册</Button>
-                        <Button as="a" href="/" className="writting">
-                            <i className="iconfont">&#xe60b;</i>写文章
-                        </Button>
-                    </Addition>
                 </Nav>
             </HeaderWrapper>
         )

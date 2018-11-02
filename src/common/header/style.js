@@ -19,17 +19,21 @@ export const Logo = styled.a.attrs({
 `
 
 export const Nav = styled.div`
-    width:960px;
+    width:100%;
     height:100%;
     min-width: 768px;
     max-width: 1440px;
     margin: 0 auto;
-    padding-right: 70px;
+    padding-right: 15px;
     padding-left: 100px;
     box-sizing: border-box;
 `
 
-export const NavItem = styled.div`
+export const NavItem = styled.a.attrs({
+    href: '/'
+})`
+    display: inline-block;
+    text-decoration:none
     line-height: 56px;
     padding: 0 15px;
     font-size: 17px;
@@ -45,10 +49,38 @@ export const NavItem = styled.div`
         float: right;
         color: #969696;
         i {
-            font-size: 20px;
+            font-size: 18px;
             font-style: normal;
             font-weight: 400;
         }
+    }
+    &.reg, &.writting {
+        line-height: 24px;
+        font-size: 15px;
+        border-radius: 20px;
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+        padding: 6px 12px
+        user-select: none;
+        box-sizing: border-box;
+    }
+    &.reg {
+        width: 80px;
+        height: 38px
+        color: #ea6f5a;
+        margin: 9px 5px 0px 15px;
+        background-color: transparent;  
+        border: 1px solid rgba(236,97,73,.7);
+    }
+    &.writting {
+        width: 100px;
+        height: 40px;
+        color: #fff;
+        margin: 8px 15px 0;
+        background-color: #ea6f5a;
+        border: 1px solid transparent;
+        font-weight: 400;
     }
     &.active {
         color: #ea6f5a;
@@ -115,32 +147,5 @@ export const NavSearch = styled.input.attrs({
     }
     &.focused {
         width:240px; 
-    }
-`
-
-export const Addition = styled.div`
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 56px;
-
-`
-
-export const Button = styled.div`
-    float: left;
-    line-height: 38px;
-    border-radius: 19px;
-    margin-top: 9px;
-    border: 1px solid #ec6149;
-    margin-right: 20px;
-    padding: 0 20px;
-    font-size: 14px;
-    text-decoration:none
-    &.reg {
-        color: #ec6149;
-    }
-    &.writting {
-        color: #fff;
-        background: #ec6149;
     }
 `
