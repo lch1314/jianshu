@@ -20,6 +20,7 @@ import {
 
 class Header extends Component {
     render() {
+        const {focused, handleInputFocus, handleInpurBlur} = this.props;
         return (
             <HeaderWrapper>
                 <Logo />
@@ -42,17 +43,17 @@ class Header extends Component {
                     </NavItem>
                     <SearchWrapper>
                         <CSSTransition
-                            in={this.props.focused}
+                            in={focused}
                             timeout={800}
                             classNames="slide"
                         >
                             <NavSearch 
-                                onFocus={this.props.handleInputFocus}
-                                onBlur={this.props.handleInpurBlur}
-                                className={this.props.focused ? 'focused': ''}>
+                                onFocus={handleInputFocus}
+                                onBlur={handleInpurBlur}
+                                className={focused ? 'focused': ''}>
                             </NavSearch>
                         </CSSTransition>
-                        <i className={this.props.focused ? 'focused iconfont' : 'iconfont'}>&#xe614;</i>
+                        <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe614;</i>
                         {this.getListArea()}
                     </SearchWrapper>
                 </Nav>
@@ -61,7 +62,8 @@ class Header extends Component {
     }
 
     getListArea = () => {
-        if(this.props.focused) {
+        const {focused, list} = this.props;
+        if(focused) {
             return (
                 <SearchInfo>
                     <SearchInfoTitle>
@@ -70,7 +72,7 @@ class Header extends Component {
                     </SearchInfoTitle>
                     <SearchInfoList>
                         {
-                            this.props.list.map((item, index) => {
+                            list.map((item, index) => {
                                 return (
                                     <SearchInfoItem key={item}>{item}</SearchInfoItem>
                                 )
