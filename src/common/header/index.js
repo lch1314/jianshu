@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 // connect方法就是帮助我们让这个Header组件和store建立连接的一个方法
 import {connect} from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
@@ -17,69 +17,78 @@ import {
     SearchInfoList
 } from './style';
 
-const getListArea = (show) => {
-    if(show) {
+
+class Header extends Component {
+    render() {
         return (
-            <SearchInfo>
-                <SearchInfoTitle>
-                    热门搜索
-                    <SearchInfoSwitch>换一批</SearchInfoSwitch>
-                </SearchInfoTitle>
-                <SearchInfoList>
-                    <SearchInfoItem>教育</SearchInfoItem>
-                    <SearchInfoItem>亲子</SearchInfoItem>
-                    <SearchInfoItem>电影</SearchInfoItem>
-                    <SearchInfoItem>Vue</SearchInfoItem>
-                    <SearchInfoItem>美食</SearchInfoItem>
-                </SearchInfoList>
-            </SearchInfo>
+            <HeaderWrapper>
+                <Logo />
+                <Nav>
+                    <NavItem className="left active">
+                        <i className="iconfont menu-icon">&#xe600;</i>
+                        <span className="menu-text">首页</span>
+                    </NavItem>
+                    <NavItem className="left">
+                        <i className="iconfont menu-icon">&#xe663;</i>
+                        <span className="menu-text">下载App</span>
+                    </NavItem>
+                    <NavItem className="right writting">
+                        <i className="iconfont">&#xe60b;</i>写文章
+                    </NavItem>
+                    <NavItem className="right reg">注册</NavItem>
+                    <NavItem className="right">登录</NavItem>
+                    <NavItem className="right">
+                        <i className="iconfont">&#xe636;</i>
+                    </NavItem>
+                    <SearchWrapper>
+                        <CSSTransition
+                            in={this.props.focused}
+                            timeout={800}
+                            classNames="slide"
+                        >
+                            <NavSearch 
+                                onFocus={this.props.handleInputFocus}
+                                onBlur={this.props.handleInpurBlur}
+                                className={this.props.focused ? 'focused': ''}>
+                            </NavSearch>
+                        </CSSTransition>
+                        <i className={this.props.focused ? 'focused iconfont' : 'iconfont'}>&#xe614;</i>
+                        {this.getListArea()}
+                    </SearchWrapper>
+                </Nav>
+            </HeaderWrapper>
         )
-    } else {
-        return null;
+    }
+
+    getListArea = () => {
+        if(this.props.focused) {
+            return (
+                <SearchInfo>
+                    <SearchInfoTitle>
+                        热门搜索
+                        <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                    </SearchInfoTitle>
+                    <SearchInfoList>
+                        {
+                            this.props.list.map((item, index) => {
+                                return (
+                                    <SearchInfoItem key={item}>{item}</SearchInfoItem>
+                                )
+                            })
+                        }
+                    </SearchInfoList>
+                </SearchInfo>
+            )
+        } else {
+            return null;
+        }
     }
 }
 
 // 现在Header就是一个无状态组件(性能会比较高)
-const Header = (props) => {
-    return (
-        <HeaderWrapper>
-            <Logo />
-            <Nav>
-                <NavItem className="left active">
-                    <i className="iconfont menu-icon">&#xe600;</i>
-                    <span className="menu-text">首页</span>
-                </NavItem>
-                <NavItem className="left">
-                    <i className="iconfont menu-icon">&#xe663;</i>
-                    <span className="menu-text">下载App</span>
-                </NavItem>
-                <NavItem className="right writting">
-                    <i className="iconfont">&#xe60b;</i>写文章
-                </NavItem>
-                <NavItem className="right reg">注册</NavItem>
-                <NavItem className="right">登录</NavItem>
-                <NavItem className="right">
-                    <i className="iconfont">&#xe636;</i>
-                </NavItem>
-                <SearchWrapper>
-                    <CSSTransition
-                        in={props.focused}
-                        timeout={800}
-                        classNames="slide"
-                    >
-                        <NavSearch 
-                            onFocus={props.handleInputFocus}
-                            onBlur={props.handleInpurBlur}
-                            className={props.focused ? 'focused': ''}>
-                        </NavSearch>
-                    </CSSTransition>
-                    <i className={props.focused ? 'focused iconfont' : 'iconfont'}>&#xe614;</i>
-                    {getListArea(props.focused)}
-                </SearchWrapper>
-            </Nav>
-        </HeaderWrapper>
-    )
-}
+// 因为我们后面要在props中加一些逻辑，如果继续用无状态组件就不合适了，所以重新换回有状态组件
+/* const Header = (props) => {
+} */
 
 // 这个方法的意思是:这个组件和store做连接的时候，store里面的数据如何映射到props上面，它会接受state参数,这个state指的就是store里面的数据,即reducer.js中返回的state数据
 const mapStateToProps = (state) => {
@@ -90,7 +99,8 @@ const mapStateToProps = (state) => {
         // focused: state.header.get('focused')
         // focused: state.get('header').get('focused')
         // 还可以有另一种写法
-        focused: state.getIn(['header','focused'])
+        focused: state.getIn(['header','focused']),
+        list: state.getIn(['header', 'list'])
     }
 }
 
@@ -98,6 +108,7 @@ const mapStateToProps = (state) => {
 const mapDispathToProps = (dispath) => {
     return {
         handleInputFocus() {
+            dispath(actionCreators.getList());
             dispath(actionCreators.searchFocus());
         },
         handleInpurBlur() {

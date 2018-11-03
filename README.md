@@ -20,3 +20,9 @@ npm install immutable  或 yarn add immutable
 
 ####安装redux-immutable
 yarn add redux-immutable
+
+####安装redux-thunk中间件(用于处理异步请求)
+npm install redux-thunk  或 yarn add redux-thunk
+
+####安装axios
+yarn add axios
