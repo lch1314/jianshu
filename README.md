@@ -17,3 +17,6 @@ npm install --save react-redux  或 yarn add react-redux
 
 ####安装immutable:
 npm install immutable  或 yarn add immutable
+
+####安装redux-immutable
+yarn add redux-immutable

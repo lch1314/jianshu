@@ -9,8 +9,35 @@ import {
     Nav,
     NavItem,
     NavSearch,
-    SearchWrapper
-} from './style'
+    SearchWrapper,
+    SearchInfo,
+    SearchInfoTitle,
+    SearchInfoSwitch,
+    SearchInfoItem,
+    SearchInfoList
+} from './style';
+
+const getListArea = (show) => {
+    if(show) {
+        return (
+            <SearchInfo>
+                <SearchInfoTitle>
+                    热门搜索
+                    <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                </SearchInfoTitle>
+                <SearchInfoList>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>亲子</SearchInfoItem>
+                    <SearchInfoItem>电影</SearchInfoItem>
+                    <SearchInfoItem>Vue</SearchInfoItem>
+                    <SearchInfoItem>美食</SearchInfoItem>
+                </SearchInfoList>
+            </SearchInfo>
+        )
+    } else {
+        return null;
+    }
+}
 
 // 现在Header就是一个无状态组件(性能会比较高)
 const Header = (props) => {
@@ -47,6 +74,7 @@ const Header = (props) => {
                         </NavSearch>
                     </CSSTransition>
                     <i className={props.focused ? 'focused iconfont' : 'iconfont'}>&#xe614;</i>
+                    {getListArea(props.focused)}
                 </SearchWrapper>
             </Nav>
         </HeaderWrapper>
@@ -55,9 +83,14 @@ const Header = (props) => {
 
 // 这个方法的意思是:这个组件和store做连接的时候，store里面的数据如何映射到props上面，它会接受state参数,这个state指的就是store里面的数据,即reducer.js中返回的state数据
 const mapStateToProps = (state) => {
+    // console.log(state);
     // 现在state返回的header对象其实是一个immutable对象了
+    // 但是现在这里state.header语法还是普通对象的写法，为了让数据类型统一，我们在../../store/reducer.js中从redux-immutable中导出combineReducers,那么这里获取到的state就是一个immutable对象了,所以需要通过get方法获取到header对象了
     return {
-        focused: state.header.get('focused')
+        // focused: state.header.get('focused')
+        // focused: state.get('header').get('focused')
+        // 还可以有另一种写法
+        focused: state.getIn(['header','focused'])
     }
 }
 

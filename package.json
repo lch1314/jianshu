@@ -10,6 +10,7 @@
     "react-scripts": "2.1.0",
     "react-transition-group": "^2.5.0",
     "redux": "^4.0.1",
+    "redux-immutable": "^4.0.0",
     "styled-components": "^4.0.3"
   },
   "scripts": {
