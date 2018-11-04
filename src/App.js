@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Globalstyle } from './style';
 import { IconGlobalstyle } from './statics/iconfont/iconfont';
 import Header from './common/header/index';
+import Home from './pages/home';
+import Detail from './pages/detail';
 
 // Provider是react-redux提供的一个核心API，它其实是个组件
 import { Provider } from 'react-redux';
@@ -19,7 +22,15 @@ class App extends Component {
         {/* 头部区域 */}
         {/* Provider的意思是：这个提供器连接了store，那么这个Provider里面所有的组件都有能力获取到store里面的内容了 */}
         <Provider store={store}>
-          <Header />
+          <Fragment>
+            <Header />
+            <BrowserRouter>
+              <Fragment>
+                <Route exact path="/" component={Home}></Route>
+                <Route exact path="/detail" component={Detail}></Route>
+              </Fragment>
+            </BrowserRouter>
+          </Fragment>
         </Provider>
       </Fragment>
     );

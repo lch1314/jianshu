@@ -26,3 +26,6 @@ npm install redux-thunk  或 yarn add redux-thunk
 
 ####安装axios
 yarn add axios
+
+####安装路由
+yarn add react-router-dom
