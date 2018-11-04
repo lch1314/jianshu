@@ -20,7 +20,7 @@ import {
 
 class Header extends Component {
     render() {
-        const {focused, handleInputFocus, handleInpurBlur} = this.props;
+        const {focused, list, handleInputFocus, handleInpurBlur} = this.props;
         return (
             <HeaderWrapper>
                 <Logo />
@@ -48,12 +48,12 @@ class Header extends Component {
                             classNames="slide"
                         >
                             <NavSearch 
-                                onFocus={handleInputFocus}
+                                onFocus={() => handleInputFocus(list)}
                                 onBlur={handleInpurBlur}
                                 className={focused ? 'focused': ''}>
                             </NavSearch>
                         </CSSTransition>
-                        <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe614;</i>
+                        <i className={focused ? 'focused iconfont zoom' : 'iconfont zoom'}>&#xe614;</i>
                         {this.getListArea()}
                     </SearchWrapper>
                 </Nav>
@@ -62,22 +62,33 @@ class Header extends Component {
     }
 
     getListArea = () => {
-        const {focused, list} = this.props;
-        if(focused) {
+        const {focused, list, page, totalPage, mouseIn, handleMouseIn, handleMouseLeave, handleChangePage} = this.props;
+        // 将immutable数组转为普通的js数组
+        const newList = list.toJS();
+        const pageList = [];
+        // 当page = 1时, i取值为0-9 正好时10条数据
+        // 当page = 2时, i取值为10-19 正好也是10条数据
+        // ....
+        if(newList.length) {
+            for(let i = (page-1) * 10; i < page*10; i++) {
+                if(newList[i]) {
+                    pageList.push(
+                        <SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
+                    )
+                }
+            }
+        }
+        if(focused || mouseIn) {
             return (
-                <SearchInfo>
+                <SearchInfo onMouseEnter={handleMouseIn} onMouseLeave={handleMouseLeave}>
                     <SearchInfoTitle>
                         热门搜索
-                        <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                        <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage, this.spinIcon)}>
+                            <i ref={(icon) => this.spinIcon = icon} className="iconfont spin">&#xe851;</i>换一批
+                        </SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoList>
-                        {
-                            list.map((item, index) => {
-                                return (
-                                    <SearchInfoItem key={item}>{item}</SearchInfoItem>
-                                )
-                            })
-                        }
+                        {pageList}
                     </SearchInfoList>
                 </SearchInfo>
             )
@@ -102,19 +113,46 @@ const mapStateToProps = (state) => {
         // focused: state.get('header').get('focused')
         // 还可以有另一种写法
         focused: state.getIn(['header','focused']),
-        list: state.getIn(['header', 'list'])
+        list: state.getIn(['header', 'list']),
+        page: state.getIn(['header', 'page']),
+        totalPage: state.getIn(['header', 'totalPage']),
+        mouseIn: state.getIn(['header', 'mouseIn'])
     }
 }
 
 // 这个方法的意思是：这个组件和store做连接的时候，组件要改变store里面的内容，就要调用dispath方法分发出去，这个参数dispath就是指的store.dispath方法
 const mapDispathToProps = (dispath) => {
     return {
-        handleInputFocus() {
-            dispath(actionCreators.getList());
+        handleInputFocus(list) {
+            // 在这里通过size的数值进行判断可以避免第二次获取焦点时也请求数据,节省性能
+            if(list.size === 0) {
+                dispath(actionCreators.getList());
+            }
             dispath(actionCreators.searchFocus());
         },
         handleInpurBlur() {
             dispath(actionCreators.searchBlur());
+        },
+        handleMouseIn() {
+            dispath(actionCreators.mouseEnter());
+        },
+        handleMouseLeave() {
+            dispath(actionCreators.mouseLeave());
+        },
+        handleChangePage(page, totalPage, spinIcon) {
+            // 把transform属性中的只要不是数字的字符全部替换成空字符串
+            let originAngle = spinIcon.style.transform.replace(/[^0-9]/ig, '');
+            if(originAngle) {
+                originAngle = parseInt(originAngle, 10);
+            } else {
+                originAngle = 0;
+            }
+            spinIcon.style.transform = 'rotate('+ (originAngle+360) +'deg)';
+            if(page < totalPage) {
+                dispath(actionCreators.changePage(page+1)); 
+            } else {
+                dispath(actionCreators.changePage(1));
+            }
         }
     }
 }

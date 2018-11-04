@@ -7,7 +7,10 @@ import { fromJS } from 'immutable';
 // 然后再下面改变的时候又会把这个immutable类型的数组变成一个普通的js数组，所以我们需要在actionCreators中把传递过来的数组也变成immutable类型的数组，这样数据类型统一才不会有问题
 const defaultState = fromJS({
     focused: false,
-    list: []
+    mouseIn: false,
+    list: [],
+    page: 1,
+    totalPage: 1
 });
 
 // reducer导出的一定是一个纯函数(给定固定的输入，就一定会有固定的输出，且没有副作用)
@@ -19,7 +22,18 @@ export default (state=defaultState, action) => {
         case constants.SEARCH_BLUR:
             return state.set('focused', false);
         case constants.HOT_SEARCH:
-            return state.set('list', action.data);
+            // return state.set('list', action.data).set('totalPage', action.totalPage)
+            // merge可以同时改变多个数据内容
+            return state.merge({
+                list: action.data,
+                totalPage: action.totalPage
+            });
+        case constants.MOUSE_ENTER:
+            return state.set('mouseIn', true)
+        case constants.MOUSE_LEAVE:
+            return state.set('mouseIn', false)
+        case constants.CHANGE_PAGE:
+            return state.set('page', action.page)
         default: 
             return state;
     }
