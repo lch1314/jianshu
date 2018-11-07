@@ -5,6 +5,7 @@ export const HeaderWrapper = styled.div`
     height:56px;
     border-bottom: 1px solid #f0f0f0;
     position:relative;
+    z-index: 1;
 `
 
 export const Logo = styled.div`
@@ -28,9 +29,7 @@ export const Nav = styled.div`
     box-sizing: border-box;
 `
 
-export const NavItem = styled.a.attrs({
-    href: '/'
-})`
+export const NavItem = styled.div`
     display: inline-block;
     text-decoration:none
     line-height: 56px;

@@ -5,6 +5,7 @@ import { IconGlobalstyle } from './statics/iconfont/iconfont';
 import Header from './common/header/index';
 import Home from './pages/home';
 import Detail from './pages/detail';
+import Login from './pages/login';
 
 // Provider是react-redux提供的一个核心API，它其实是个组件
 import { Provider } from 'react-redux';
@@ -26,6 +27,7 @@ class App extends Component {
               {/* 头部区域 */}
               <Header />
               <Route exact path="/" component={Home}></Route>
+              <Route exact path="/login" component={Login}></Route>
               {/* 第一种形式写法 */}
               <Route exact path="/detail/:id" component={Detail}></Route>
               {/* 第二种形式写法 */}

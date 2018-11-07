@@ -9,6 +9,7 @@ import { combineReducers } from 'redux-immutable';
 import {reducer as headerReducer } from '../common/header/store';
 import {reducer as homeReducer} from '../pages/home/store';
 import {reducer as detailReducer } from '../pages/detail/store';
+import {reducer as loginReducer } from '../pages/login/store';
 
 
 // 从redux-immutable中导出的combineReducers方法会让传入进去的对象是一个immutable对象
@@ -16,5 +17,6 @@ export default combineReducers({
     // 头部区域的reducer存储数据
     header: headerReducer,
     home: homeReducer,
-    detail: detailReducer
+    detail: detailReducer,
+    login: loginReducer
 })
