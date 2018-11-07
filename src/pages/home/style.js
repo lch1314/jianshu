@@ -97,3 +97,30 @@ export const RecommendItem = styled.a.attrs({
     background: url(${(props) => props.imgUrl});
     background-size: contain;
 `
+
+export const LoadMore = styled.a`
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: #a5a5a5;
+    text-align: center;
+    border-radius: 20px;
+    color: #fff;
+    margin: 30px 0;
+    text-decoration: none;
+    cursor: pointer;
+`
+export const BackTop = styled.a`
+    position: fixed;
+    right: 30px;
+    bottom: 50px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 22px;
+`

@@ -8,20 +8,37 @@ import * as constants from './constants';
 const defaultState = fromJS({
     topicList: [],
     articleList: [],
-    recommendList: []
+    recommendList: [],
+    articlePage: 1,
+    showScroll: false
 });
+
+const changeHomeData = (state, action) => {
+    const {topicList, articleList, recommendList} = action;
+    return state.merge({
+        topicList: fromJS(topicList),
+        articleList: fromJS(articleList),
+        recommendList: fromJS(recommendList)
+    })
+}
+
+const addArticleList = (state, action) => {
+    return state.merge({
+        'articleList': state.get('articleList').concat(action.list),
+        'articlePage': action.nextPage
+    })
+}
 
 // reducer导出的一定是一个纯函数(给定固定的输入，就一定会有固定的输出，且没有副作用)
 // 第一个参数:指自己返回出去的数据   第二个参数：指组件通过dispath分发过来的数据
 export default (state=defaultState, action) => {
-    const {topicList, articleList, recommendList} = action;
     switch(action.type){
         case constants.CHANGE_HOME_DATA:
-            return state.merge({
-                topicList: fromJS(topicList),
-                articleList: fromJS(articleList),
-                recommendList: fromJS(recommendList)
-            })
+            return changeHomeData(state, action)
+        case constants.Add_ARTICLELIST:
+            return addArticleList(state, action)
+        case constants.TOGGLE_SCROLL_TOP:
+            return state.set('showScroll', action.show)
         default: 
             return state;
     }
