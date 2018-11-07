@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import {actionCreatots} from '../store';
 import {
@@ -7,7 +7,10 @@ import {
     LoadMore
 } from '../style';
 
-class List extends Component {
+// 不要用a标签做页面的跳转，应该用react-router-dom中的Link标签
+import { Link } from 'react-router-dom';
+
+class List extends PureComponent {
     render() {
         const {articleList, getMoreList, page} = this.props;
         return (
@@ -15,13 +18,15 @@ class List extends Component {
                 {
                     articleList.map((item,index) => {
                         return (
-                            <ListItem key={index}>
-                                <img className="pic" src={item.get('imgUrl')} alt=""></img>
-                                <ListInfo>
-                                    <h3 className="title">{item.get('title')}</h3>
-                                    <p className="desc">{item.get('desc')}</p>
-                                </ListInfo>
-                            </ListItem>
+                            <Link key={index} to="/detail">
+                                <ListItem>
+                                    <img className="pic" src={item.get('imgUrl')} alt=""></img>
+                                    <ListInfo>
+                                        <h3 className="title">{item.get('title')}</h3>
+                                        <p className="desc">{item.get('desc')}</p>
+                                    </ListInfo>
+                                </ListItem>
+                            </Link>
                         )
                     })
                 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {connect} from 'react-redux';
 import Topic from './components/Topic';
 import List from './components/List';
@@ -13,7 +13,9 @@ import {
 
 import {actionCreatots} from './store';
 
-class Home extends Component {
+
+// PureComponent底层实现了一个shouldComponentUpdate,这样的话就不需要我们自己手写这个钩子函数了
+class Home extends PureComponent {
     handleScrollTop() {
         window.scrollTo(0, 0);
     }

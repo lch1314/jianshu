@@ -17,13 +17,17 @@ import {
     SearchInfoList
 } from './style';
 
+import {Link} from 'react-router-dom'
+
 
 class Header extends Component {
     render() {
         const {focused, list, handleInputFocus, handleInpurBlur} = this.props;
         return (
             <HeaderWrapper>
-                <Logo />
+                <Link to="/">
+                    <Logo />
+                </Link>
                 <Nav>
                     <NavItem className="left active">
                         <i className="iconfont menu-icon">&#xe600;</i>

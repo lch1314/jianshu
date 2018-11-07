@@ -19,18 +19,16 @@ class App extends Component {
         <Globalstyle/>
         {/* 字体图标样式 */}
         <IconGlobalstyle />
-        {/* 头部区域 */}
         {/* Provider的意思是：这个提供器连接了store，那么这个Provider里面所有的组件都有能力获取到store里面的内容了 */}
         <Provider store={store}>
-          <Fragment>
-            <Header />
-            <BrowserRouter>
-              <Fragment>
-                <Route exact path="/" component={Home}></Route>
-                <Route exact path="/detail" component={Detail}></Route>
-              </Fragment>
-            </BrowserRouter>
-          </Fragment>
+          <BrowserRouter>
+            <Fragment>
+              {/* 头部区域 */}
+              <Header />
+              <Route exact path="/" component={Home}></Route>
+              <Route exact path="/detail" component={Detail}></Route>
+            </Fragment>
+          </BrowserRouter>
         </Provider>
       </Fragment>
     );
