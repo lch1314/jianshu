@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+// import axios from 'axios';
+// import {constants} from './store';
 import Topic from './components/Topic';
 import List from './components/List';
 import Writer from './components/Writer';
@@ -8,6 +11,8 @@ import {
     HomeLeft,
     HomeRight
 } from './style';
+
+import {actionCreatots} from './store';
 
 class Home extends Component {
     render() {
@@ -25,6 +30,19 @@ class Home extends Component {
             </HomeWrapper>
         )
     }
+
+    componentDidMount() {
+        this.props.changeHomeData();
+    }
 }
 
-export default Home;
+const mapStateToDispatch = (dispatch) => ({
+    changeHomeData() {
+        const action = actionCreatots.getHomeInfo();
+        dispatch(action);
+    }
+})
+
+
+
+export default connect(null, mapStateToDispatch)(Home);

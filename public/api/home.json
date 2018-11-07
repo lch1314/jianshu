@@ -1,0 +1,90 @@
+{
+    "success": true,
+    "data": {
+        "topicList": [
+            {
+                "id": 1,
+                "title": "社会热点",
+                "imgUrl": "//upload.jianshu.io/collections/images/4/sy_20091020135145113016.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
+            },
+            {
+                "id": 2,
+                "title": "手绘",
+                "imgUrl": "//upload.jianshu.io/collections/images/283250/%E6%BC%AB%E7%94%BB%E4%B8%93%E9%A2%98.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
+            },
+            {
+                "id": 3,
+                "title": "摄影",
+                "imgUrl": "//upload.jianshu.io/collections/images/83/1.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
+            },
+            {
+                "id": 4,
+                "title": "@IT.互联网",
+                "imgUrl": "//upload.jianshu.io/collections/images/14/6249340_194140034135_2.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
+            },
+            {
+                "id": 5,
+                "title": "读书",
+                "imgUrl": "//upload.jianshu.io/collections/images/4/sy_20091020135145113016.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
+            },
+            {
+                "id": 6,
+                "title": "故事",
+                "imgUrl": "//upload.jianshu.io/collections/images/95/1.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
+            },
+            {
+                "id": 7,
+                "title": "科普",
+                "imgUrl": "//upload.jianshu.io/collections/images/76/12.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
+            }
+        ],
+        "articleList": [
+            {
+                "id": 1,
+                "title": "《三生三世浮生若梦》楔子",
+                "desc": "凤九本以为她和东华会就这样相安无事地度过这一生，却没想到会再次和他相遇还拥有了只属于他们自己爱情的结晶。东华，在那次...",
+                "imgUrl": "//upload-images.jianshu.io/upload_images/13475049-e7343d58f4f18393.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+            },
+            {
+                "id": 2,
+                "title": "能让男人高看的女人，在这几个方面都表现的非常地“冷淡”错不了",
+                "desc": "在我们生活中，有些女人的行为总是被别人看不起，挑着毛病背面或者当面的说她的不是，而有些女人，就会给别人留下好的印象，或者是更多得记得她好的一方面...",
+                "imgUrl": "//upload-images.jianshu.io/upload_images/5135554-57f39e942611e69a.jpeg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+            },
+            {
+                "id": 3,
+                "title": "秋天卫衣搭配什么裤子好看 卫衣阔腿裤入秋最in最时髦组合",
+                "desc": "入秋以来，卫衣一直是最受欢迎的单品，因为青春随性的卫衣和气质百搭阔腿裤组合，碰撞出的是时髦又舒适的美妙火花！ 卫衣+牛仔阔腿裤(摩登时尚风) 卫...",
+                "imgUrl": "//upload-images.jianshu.io/upload_images/12861608-dd61279d4b33b6cd?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+            },
+            {
+                "id": 4,
+                "title": "总会有一个人，让你心疼！",
+                "desc": "他是一个初中学历的男人，总是说自己没有一技之长，并且一无所有！ 不知道什么时间开始，他已经走进我的生活！ 我眼中的他，并非一无所有！ 他很爱笑，...",
+                "imgUrl": "//upload-images.jianshu.io/upload_images/6880615-de7562b585c513bd.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+            }
+        ],
+        "recommendList": [
+            {
+                "id": 1,
+                "imgUrl": "http://cdn2.jianshu.io/assets/web/banner-s-3-7123fd94750759acf7eca05b871e9d17.png"
+            },
+            {
+                "id": 2,
+                "imgUrl": "http://cdn2.jianshu.io/assets/web/banner-s-4-b70da70d679593510ac93a172dfbaeaa.png"
+            },
+            {
+                "id": 3,
+                "imgUrl": "http://cdn2.jianshu.io/assets/web/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png"
+            },
+            {
+                "id": 4,
+                "imgUrl": "http://cdn2.jianshu.io/assets/web/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png"
+            },
+            {
+                "id": 5,
+                "imgUrl": "http://cdn2.jianshu.io/assets/web/banner-s-6-c4d6335bfd688f2ca1115b42b04c28a7.png"
+            }
+        ]
+    }
+}
