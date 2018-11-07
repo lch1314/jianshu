@@ -26,7 +26,10 @@ class App extends Component {
               {/* 头部区域 */}
               <Header />
               <Route exact path="/" component={Home}></Route>
-              <Route exact path="/detail" component={Detail}></Route>
+              {/* 第一种形式写法 */}
+              <Route exact path="/detail/:id" component={Detail}></Route>
+              {/* 第二种形式写法 */}
+              {/* <Route exact path="/detail" component={Detail}></Route> */}
             </Fragment>
           </BrowserRouter>
         </Provider>

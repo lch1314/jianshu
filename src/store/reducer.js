@@ -8,11 +8,13 @@ import { combineReducers } from 'redux-immutable';
 // 知识点2: as是ES6的语法，表示为导出的这个名字起一个别名
 import {reducer as headerReducer } from '../common/header/store';
 import {reducer as homeReducer} from '../pages/home/store';
+import {reducer as detailReducer } from '../pages/detail/store';
 
 
 // 从redux-immutable中导出的combineReducers方法会让传入进去的对象是一个immutable对象
 export default combineReducers({
     // 头部区域的reducer存储数据
     header: headerReducer,
-    home: homeReducer
+    home: homeReducer,
+    detail: detailReducer
 })

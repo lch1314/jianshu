@@ -18,7 +18,10 @@ class List extends PureComponent {
                 {
                     articleList.map((item,index) => {
                         return (
-                            <Link key={index} to="/detail">
+                            /* 第一种形式 */
+                            <Link key={index} to={'/detail/' + item.get('id')}>
+                            {/* 第二种形式 */}
+                            {/* <Link key={index} to={'/detail?id=' + item.get('id')}> */}
                                 <ListItem>
                                     <img className="pic" src={item.get('imgUrl')} alt=""></img>
                                     <ListInfo>
