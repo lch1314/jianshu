@@ -13,6 +13,8 @@ export const geDetailInfo = (id) => {
         axios.get('/api/detail.json?id=' + id).then((res) => {
             const result = res.data.data;
             dispatch(changeDetail(result.title, result.content));
+        }).catch((err) => {
+            console.log('请求失败！')
         })
     }
 }

@@ -38,9 +38,11 @@ class Header extends Component {
                         <i className="iconfont menu-icon">&#xe663;</i>
                         <span className="menu-text">下载App</span>
                     </NavItem>
-                    <NavItem className="right writting">
-                        <i className="iconfont">&#xe60b;</i>写文章
-                    </NavItem>  
+                    <Link to="/write">
+                        <NavItem className="right writting">
+                            <i className="iconfont">&#xe60b;</i>写文章
+                        </NavItem>  
+                    </Link>
                     <NavItem className="right reg">注册</NavItem>
                     {
                         login? 
