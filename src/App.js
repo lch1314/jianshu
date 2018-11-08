@@ -4,7 +4,8 @@ import { Globalstyle } from './style';
 import { IconGlobalstyle } from './statics/iconfont/iconfont';
 import Header from './common/header/index';
 import Home from './pages/home';
-import Detail from './pages/detail';
+// 这里需要加载loadable.js了
+import Detail from './pages/detail/loadable';
 import Login from './pages/login';
 import Write from './pages/write';
 

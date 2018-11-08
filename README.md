@@ -29,3 +29,6 @@ yarn add axios
 
 ####安装路由
 yarn add react-router-dom
+
+####安装react-loadable用于处理异步路由
+yarn add react-loadable
